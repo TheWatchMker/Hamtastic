@@ -7,7 +7,7 @@ Flask: For creating the web server to handle HTTP requests.
 pyserial: For serial communication with the Meshtastic device.
 requests: For making HTTP requests to communicate with Node-RED.
 json: For handling JSON data.
-Custom js8net library: For JS8Call communications (make sure this library is installed).
+Js8net library: For JS8Call communications (make sure this library is installed).
 Install these packages using pip:
 
 bash
