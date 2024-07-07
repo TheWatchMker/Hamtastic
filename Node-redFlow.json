@@ -1,0 +1,762 @@
+[
+    {
+        "id": "99a7adf59dbd195f",
+        "type": "tab",
+        "label": "Meshtastic to Fldigi",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b548d35a06ca5d6e",
+        "type": "group",
+        "z": "99a7adf59dbd195f",
+        "name": "Meshtastic IN/OUT",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "22a8dd620745401f",
+            "55294d8448f7a032",
+            "1a0827a2251ca04c",
+            "3ca4032638941d46",
+            "f341646ad8daf358",
+            "5dcb75cc75deceaa",
+            "3b1ee3b322a4686e",
+            "0474e22e14665802",
+            "2103be993937fd02",
+            "0d026b99914f7943"
+        ],
+        "x": 114,
+        "y": 19,
+        "w": 1152,
+        "h": 242
+    },
+    {
+        "id": "f7bf4673584862ee",
+        "type": "group",
+        "z": "99a7adf59dbd195f",
+        "name": "Get/Set Channels for Meshtastic",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ca2dbfeba7de9ca8",
+            "4ed6eb27c0d72c02",
+            "edf4b1f2bdf6c55d",
+            "2d1068f683d2eb42",
+            "a2392e74136ea64a",
+            "75d37d9301820d1f",
+            "c3d3cdb6e7d51eb3",
+            "8cf2c43e9a2a9909",
+            "d8bc052806b52c35"
+        ],
+        "x": 14,
+        "y": 279,
+        "w": 1072,
+        "h": 202
+    },
+    {
+        "id": "df09c76d236f9fa8",
+        "type": "group",
+        "z": "99a7adf59dbd195f",
+        "name": "FLDigi IN/OUT",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b883d5ba6997e23a",
+            "630d80b7fe8e9571",
+            "869127b7f788ad10",
+            "829e3cf1317110f8",
+            "bd9ebe87bbd1d042"
+        ],
+        "x": 714,
+        "y": 499,
+        "w": 692,
+        "h": 142
+    },
+    {
+        "id": "d97c47fca25c35c8",
+        "type": "group",
+        "z": "99a7adf59dbd195f",
+        "name": "Js8call IN/Out",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "51500f92c91957fd",
+            "bf6d78b8cdab02ab",
+            "c39f6e193e767306",
+            "b15b2593a5d86a19",
+            "7ea4651d119b19a9"
+        ],
+        "x": 14,
+        "y": 499,
+        "w": 692,
+        "h": 122
+    },
+    {
+        "id": "22a8dd620745401f",
+        "type": "http in",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Meshtastic In",
+        "url": "/Fuck",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "55294d8448f7a032",
+                "1a0827a2251ca04c",
+                "3ca4032638941d46"
+            ]
+        ]
+    },
+    {
+        "id": "55294d8448f7a032",
+        "type": "http response",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1a0827a2251ca04c",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3ca4032638941d46",
+        "type": "switch",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Switch on portnum",
+        "property": "payload.packet.decoded.portnum",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "TEXT_MESSAGE_APP",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "TELEMETRY_APP",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "POSITION_APP",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 630,
+        "y": 120,
+        "wires": [
+            [
+                "f341646ad8daf358",
+                "b09fb6011b27f052",
+                "adb0188bfa78d3b2"
+            ],
+            [
+                "5dcb75cc75deceaa"
+            ],
+            [
+                "3b1ee3b322a4686e"
+            ]
+        ]
+    },
+    {
+        "id": "f341646ad8daf358",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Debug TEXT_MESSAGE_APP",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "5dcb75cc75deceaa",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Debug TELEMETRY_APP",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1000,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3b1ee3b322a4686e",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Debug POSITION_APP",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1010,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "0474e22e14665802",
+        "type": "inject",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Send Meshtastic Message",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"destination\":\"^all\",\"message\":\"while you were away\"}",
+        "payloadType": "json",
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "2103be993937fd02"
+            ]
+        ]
+    },
+    {
+        "id": "2103be993937fd02",
+        "type": "http request",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Send to Flask",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "http://localhost:5000/send_message",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1000,
+        "y": 220,
+        "wires": [
+            [
+                "0d026b99914f7943"
+            ]
+        ]
+    },
+    {
+        "id": "0d026b99914f7943",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "b548d35a06ca5d6e",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1170,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ca2dbfeba7de9ca8",
+        "type": "inject",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Get Channels",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 320,
+        "wires": [
+            [
+                "4ed6eb27c0d72c02"
+            ]
+        ]
+    },
+    {
+        "id": "4ed6eb27c0d72c02",
+        "type": "http request",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Get Channels from Flask",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "http://localhost:5000/get_channels",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "edf4b1f2bdf6c55d"
+            ]
+        ]
+    },
+    {
+        "id": "edf4b1f2bdf6c55d",
+        "type": "function",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Parse Channels",
+        "func": "const channels = msg.payload.channels;\nconst parsedChannels = channels.map((channel, index) => {\n    const channelName = channel.settings && channel.settings.name ? channel.settings.name : Channel ${index};\n    return {\n        index: index,\n        name: channelName\n    };\n});\nflow.set('channels', parsedChannels);\nmsg.payload = parsedChannels.map(channel => ({\n    label: channel.name,\n    value: channel.index\n}));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 320,
+        "wires": [
+            [
+                "2d1068f683d2eb42",
+                "c3d3cdb6e7d51eb3"
+            ]
+        ]
+    },
+    {
+        "id": "2d1068f683d2eb42",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Parsed Channels",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 830,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "a2392e74136ea64a",
+        "type": "inject",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Set Channel",
+        "props": [
+            {
+                "p": "payload",
+                "v": "{\"channel_index\": 0, \"channel_name\": \"new_channel_name\"}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 380,
+        "wires": [
+            [
+                "75d37d9301820d1f"
+            ]
+        ]
+    },
+    {
+        "id": "75d37d9301820d1f",
+        "type": "function",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Prepare Set Channel Payload",
+        "func": "const channels = flow.get('channels');\nconst channelIndex = msg.payload.channel_index;\nconst channelName = msg.payload.channel_name;\nconst psk = msg.payload.psk || 'default_psk';\n\nif (channels && channels[channelIndex]) {\n    msg.payload = {\n        channel_index: channelIndex,\n        channel_name: channelName,\n        psk: psk\n    };\n    return msg;\n} else {\n    node.error('Invalid channel index');\n    return null;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "8cf2c43e9a2a9909"
+            ]
+        ]
+    },
+    {
+        "id": "c3d3cdb6e7d51eb3",
+        "type": "ui_dropdown",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "",
+        "label": "Select Channel",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 820,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8cf2c43e9a2a9909",
+        "type": "http request",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Set Channel on Flask",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "http://localhost:5000/set_channel",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 680,
+        "y": 440,
+        "wires": [
+            [
+                "d8bc052806b52c35"
+            ]
+        ]
+    },
+    {
+        "id": "d8bc052806b52c35",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "f7bf4673584862ee",
+        "name": "Set Channel Response",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b09fb6011b27f052",
+        "type": "function",
+        "z": "99a7adf59dbd195f",
+        "name": "Extract Text",
+        "func": "// Check if the decoded object exists and has a text property\nif (msg.payload && msg.payload.packet && msg.payload.packet.decoded && msg.payload.packet.decoded.text) {\n    // Extract the text value from the message object\n    msg.payload = {\n        message: msg.payload.packet.decoded.text + '^r'\n    };\n} else {\n    // If text property doesn't exist, set payload to a default value or null\n    msg.payload = { message: null };\n}\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 380,
+        "wires": [
+            [
+                "b883d5ba6997e23a"
+            ]
+        ]
+    },
+    {
+        "id": "b883d5ba6997e23a",
+        "type": "http request",
+        "z": "99a7adf59dbd195f",
+        "g": "df09c76d236f9fa8",
+        "name": "Send to FLDIGI",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:5002/send_message",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "valueType": "application/json"
+            }
+        ],
+        "x": 1040,
+        "y": 540,
+        "wires": [
+            [
+                "630d80b7fe8e9571"
+            ]
+        ]
+    },
+    {
+        "id": "630d80b7fe8e9571",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "df09c76d236f9fa8",
+        "name": "Debug FLDIGI Response",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1250,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "869127b7f788ad10",
+        "type": "inject",
+        "z": "99a7adf59dbd195f",
+        "g": "df09c76d236f9fa8",
+        "name": "Send Message",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"message\": \"Hello FLDIGI^r\"}",
+        "payloadType": "json",
+        "x": 840,
+        "y": 540,
+        "wires": [
+            [
+                "b883d5ba6997e23a"
+            ]
+        ]
+    },
+    {
+        "id": "829e3cf1317110f8",
+        "type": "http in",
+        "z": "99a7adf59dbd195f",
+        "g": "df09c76d236f9fa8",
+        "name": "Receive from FLDIGI",
+        "url": "/receive_message",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 940,
+        "y": 600,
+        "wires": [
+            [
+                "bd9ebe87bbd1d042",
+                "2103be993937fd02"
+            ]
+        ]
+    },
+    {
+        "id": "bd9ebe87bbd1d042",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "df09c76d236f9fa8",
+        "name": "Received Message",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1170,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "51500f92c91957fd",
+        "type": "http in",
+        "z": "99a7adf59dbd195f",
+        "g": "d97c47fca25c35c8",
+        "name": "Receive from JS8Call",
+        "url": "/receive_message",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 540,
+        "wires": [
+            [
+                "bf6d78b8cdab02ab",
+                "2103be993937fd02"
+            ]
+        ]
+    },
+    {
+        "id": "bf6d78b8cdab02ab",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "d97c47fca25c35c8",
+        "name": "Debug JS8Call Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 510,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "b15b2593a5d86a19",
+        "type": "http request",
+        "z": "99a7adf59dbd195f",
+        "g": "d97c47fca25c35c8",
+        "name": "Send to JS8Call",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:5003/send_message",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "c39f6e193e767306"
+            ]
+        ]
+    },
+    {
+        "id": "c39f6e193e767306",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "g": "d97c47fca25c35c8",
+        "name": "Debug Send Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 550,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "7ea4651d119b19a9",
+        "type": "inject",
+        "z": "99a7adf59dbd195f",
+        "g": "d97c47fca25c35c8",
+        "name": "Test Send to JS8Call",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"message\":\"Hello JS8Call\", \"destination\":\"ALLCALL\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [
+                "b15b2593a5d86a19"
+            ]
+        ]
+    },
+    {
+        "id": "ef503a9fe9ec7004",
+        "type": "debug",
+        "z": "99a7adf59dbd195f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "adb0188bfa78d3b2",
+        "type": "function",
+        "z": "99a7adf59dbd195f",
+        "name": "Extract Text",
+        "func": "// Check if the decoded object exists and has a text property\nif (msg.payload && msg.payload.packet && msg.payload.packet.decoded && msg.payload.packet.decoded.text) {\n    // Extract the text value from the message object\n    msg.payload = {\n        message: msg.payload.packet.decoded.text \n    };\n} else {\n    // If text property doesn't exist, set payload to a default value or null\n    msg.payload = { message: null };\n}\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 300,
+        "wires": [
+            [
+                "ef503a9fe9ec7004",
+                "b15b2593a5d86a19"
+            ]
+        ]
+    }
+]
