@@ -1,8 +1,8 @@
 # Hamtastic
 Using Python/Flask/Node-red to send messages from meshtastic to HF radios through js8call and FLdigi
 
-## You'll need to install the following Python packages:
-
+## You'll need to setup a venv and install the following Python packages:
+- venv keeps your python packages isolated so you dont have to worry about falling into library hell.
 - Flask: For creating the web server to handle HTTP requests.
 - pyserial: For serial communication with the Meshtastic device.
 - requests: For making HTTP requests to communicate with Node-RED.
@@ -10,12 +10,16 @@ Using Python/Flask/Node-red to send messages from meshtastic to HF radios throug
 - Js8net library: For JS8Call communications (make sure this library is installed).
 - Install these packages using pip:
 
+
 ```
-pip install flask pyserial requests json
-```
-- Ensure the custom js8net library is available and installed as it is used in the JS8Call script.
-```
-pip install pip@git+https://github.com/jfrancis42/js8net
+mkdir -p ~/src/                                          # -p says to create the parent directories and not to die if the dir already exists.
+cd ~/src
+git clone https://github.com/TheWatchMker/Hamtastic      # clone the repo
+cd Hamtastic
+python -m venv .                                         # create the venv
+. bin/activate                                           # makes some env changes so we can pip install to our local venv.
+pip install flask pyserial requests json                 # install the stuff
+pip install pip@git+https://github.com/jfrancis42/js8net # Ensure the custom js8net library is available and installed as it is used in the JS8Call script.
 ```
 
 ## Node-RED Dependencies
